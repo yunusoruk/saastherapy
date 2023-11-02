@@ -55,16 +55,17 @@ export default async function MarketingLayout({
                             </nav>
                         )}
                     </div>
-
                 </div>
             </header>
-            <div className=" grid flex-1 gap-12 md:grid-cols-[200px_1fr]">
-                <Sidebar />
-                <main className="flex w-full flex-1 flex-col overflow-hidden">
+            {/* <div className="container grid flex-1 md:grid-cols-[200px_1fr]"> */}
+            <div className="container flex-1 flex">
+                <Sidebar>
                     {children}
-                </main>
+                </Sidebar>
+
             </div>
-            <SiteFooter />
+
+            {/* <SiteFooter /> */}
         </div>
     )
 }

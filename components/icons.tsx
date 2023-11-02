@@ -1,6 +1,7 @@
 import {
     AlertTriangle,
     ArrowRight,
+    BrainCircuit,
     Check,
     ChevronLeft,
     ChevronRight,
@@ -16,7 +17,9 @@ import {
     Menu,
     Moon,
     MoreVertical,
+    PanelLeftOpen,
     PanelRight,
+    PanelRightOpen,
     Pizza,
     Plus,
     Settings,
@@ -31,10 +34,11 @@ import {
 
 
 export const Icons = {
-    panel: PanelRight,
+    panelRight: PanelRightOpen,
+    panelLeft: PanelLeftOpen,
     menu: Menu,
     sparkles: Sparkles,
-    logo: Command,
+    logo: BrainCircuit,
     close: X,
     spinner: Loader2,
     chevronLeft: ChevronLeft,

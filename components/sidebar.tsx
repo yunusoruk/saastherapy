@@ -17,7 +17,7 @@ import { useMediaQuery } from "usehooks-ts";
 
 import { cn } from "@/lib/utils";
 import { Icons } from "./icons";
-import { Button } from "./ui/button";
+import { Button, buttonVariants } from "./ui/button";
 import { DashboardNav } from "./nav";
 import { dashboardConfig } from "@/config/dashboard";
 
@@ -67,12 +67,33 @@ export const Sidebar: FC<SidebarProps> = ({ children }) => {
                 isCollapsed && "w-0 border-none"
             )}>
 
-                <Button variant='outline' size='icon' onClick={collapse} className={cn("absolute top-2 right-2",
+                {/* <Button variant='outline' size='icon' onClick={collapse} className={cn("absolute top-2 right-2",
                     isResetting && "transition-all ease-in-out duration-200",
                     isCollapsed && "hidden disabled"
                 )}>
                     <Icons.panelRight className="text-muted-foreground" />
-                </Button>
+                </Button> */}
+
+
+                <div className="flex flex-row justify-between pt-2 pr-2 pb-2 space-x-2">
+                    <Button variant="outline" className={cn("space-x-2 w-[180px]",
+                        isResetting && "transition-all ease-in-out duration-200",
+                        isCollapsed ? "hidden disabled" : ""
+                    )
+
+                    } >
+                        <Icons.add className="h-4 w-4  ml-2" />
+                        <span className="">
+                            New Patient
+                        </span>
+                    </Button>
+                    <Button variant='outline' size='icon' onClick={collapse} className={cn("",
+                        isResetting && "transition-all ease-in-out duration-200",
+                        isCollapsed && "hidden disabled"
+                    )}>
+                        <Icons.panelRight className="text-muted-foreground" />
+                    </Button>
+                </div>
 
             </aside>
             <main className="flex w-full flex-1 flex-col overflow-hidden relative">

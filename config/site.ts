@@ -1,7 +1,7 @@
 import { SiteConfig } from "@/types";
 
 export const siteConfig: SiteConfig = {
-  name: "SaasTherapy",
+  name: "SaaS Therapy",
   description: "SaasTherapy | Get ready ..",
   url: "https://saastherapy.com",
   ogImage: "https://saastherapy.com/og.jpg",

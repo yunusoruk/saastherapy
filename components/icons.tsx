@@ -22,6 +22,7 @@ import {
     PanelRightOpen,
     Pizza,
     Plus,
+    Search,
     Settings,
     Sparkles,
     SunMedium,
@@ -34,6 +35,7 @@ import {
 
 
 export const Icons = {
+    search: Search,
     panelRight: PanelRightOpen,
     panelLeft: PanelLeftOpen,
     menu: Menu,

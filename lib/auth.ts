@@ -1,15 +1,15 @@
-import bcrypt from "bcrypt"
-import { PrismaAdapter } from "@next-auth/prisma-adapter"
-import { NextAuthOptions } from "next-auth"
-import EmailProvider from "next-auth/providers/email"
-import GitHubProvider from "next-auth/providers/github"
-import GoogleProvider from "next-auth/providers/google"
-import { Client } from "postmark"
-import CredentialsProvider from "next-auth/providers/credentials"
-import { siteConfig } from "@/config/site"
-import { prismadb } from "@/lib/prismadb"
+import bcrypt from "bcrypt";
+import { PrismaAdapter } from "@next-auth/prisma-adapter";
+import { NextAuthOptions } from "next-auth";
+import EmailProvider from "next-auth/providers/email";
+import GitHubProvider from "next-auth/providers/github";
+import GoogleProvider from "next-auth/providers/google";
+import { Client } from "postmark";
+import CredentialsProvider from "next-auth/providers/credentials";
+import { siteConfig } from "@/config/site";
+import { prismadb } from "@/lib/prismadb";
 
-const postmarkClient = new Client(process.env.POSTMARK_API_TOKEN as string)
+// const postmarkClient = new Client(process.env.POSTMARK_API_TOKEN as string)
 
 export const authOptions: NextAuthOptions = {
   // huh any! I know.
@@ -29,44 +29,44 @@ export const authOptions: NextAuthOptions = {
     }),
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID as string,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
     }),
     CredentialsProvider({
-      name: 'credentials',
+      name: "credentials",
       credentials: {
-        email: { label: 'email', type: 'text' },
-        password: { label: 'password', type: 'password' }
+        email: { label: "email", type: "text" },
+        password: { label: "password", type: "password" },
       },
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) {
-          return null
+          return null;
         }
 
         const user = await prismadb.user.findUnique({
           where: {
-            email: credentials.email
-          }
+            email: credentials.email,
+          },
         });
 
         if (!user || !user?.hashedPassword) {
-          throw new Error('Invalid credentials');
+          throw new Error("Invalid credentials");
         }
 
         const isCorrectPassword = await bcrypt.compare(
           credentials.password,
-          user.hashedPassword
+          user.hashedPassword,
         );
 
         if (!isCorrectPassword) {
-          throw new Error('Invalid credentials');
+          throw new Error("Invalid credentials");
         }
-        
+
         // if (!user?.emailVerified) {
         //   throw new Error('User not verified');
         // }
 
         return user;
-      }
+      },
     }),
     // EmailProvider({
     //   from: env.SMTP_FROM,
@@ -114,26 +114,26 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     async session({ token, session }) {
       if (token) {
-        session.user.id = token.id
-        session.user.name = token.name
-        session.user.email = token.email
-        session.user.image = token.picture
+        session.user.id = token.id;
+        session.user.name = token.name;
+        session.user.email = token.email;
+        session.user.image = token.picture;
       }
 
-      return session
+      return session;
     },
     async jwt({ token, user }) {
       const dbUser = await prismadb.user.findFirst({
         where: {
           email: token.email,
         },
-      })
+      });
 
       if (!dbUser) {
         if (user) {
-          token.id = user?.id
+          token.id = user?.id;
         }
-        return token
+        return token;
       }
 
       return {
@@ -141,7 +141,7 @@ export const authOptions: NextAuthOptions = {
         name: dbUser.name,
         email: dbUser.email,
         picture: dbUser.image,
-      }
+      };
     },
   },
-}
+};

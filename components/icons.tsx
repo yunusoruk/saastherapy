@@ -13,11 +13,14 @@ import {
     Laptop,
     Loader2,
     LucideProps,
+    Menu,
     Moon,
     MoreVertical,
+    PanelRight,
     Pizza,
     Plus,
     Settings,
+    Sparkles,
     SunMedium,
     Trash,
     Twitter,
@@ -28,6 +31,9 @@ import {
 
 
 export const Icons = {
+    panel: PanelRight,
+    menu: Menu,
+    sparkles: Sparkles,
     logo: Command,
     close: X,
     spinner: Loader2,

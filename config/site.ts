@@ -1,14 +1,13 @@
-import { SiteConfig } from "@/types"
+import { SiteConfig } from "@/types";
 
 export const siteConfig: SiteConfig = {
-  name: "yo",
-  description:
-    "yo | Get ready ..",
-  url: "https://yo.io",
-  ogImage: "https://yo.io/og.jpg",
+  name: "Empthetics",
+  description: "Empthetics | Get ready ..",
+  url: "https://empthetics.com",
+  ogImage: "https://empthetics.com/og.jpg",
   links: {
-    twitter: "https://twitter.com/yo",
+    twitter: "https://twitter.com/empthetics",
     github: "https://github.com/yunusoruk",
-    mail: "mailto:info@yo.io",
+    mail: "mailto:info@empthetics.com",
   },
-}
+};

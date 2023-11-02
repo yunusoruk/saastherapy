@@ -10,6 +10,9 @@ import { getCurrentUser } from "@/lib/session"
 import { notFound } from "next/navigation"
 import PremiumButton from "@/components/premium-button"
 import { ModeToggle } from "@/components/mode-toggle"
+import { DashboardNav } from "@/components/nav"
+import { dashboardConfig } from "@/config/dashboard"
+import { Sidebar } from "@/components/sidebar"
 
 
 interface MarketingLayoutProps {
@@ -24,8 +27,8 @@ export default async function MarketingLayout({
 
     return (
         <div className="flex min-h-screen flex-col">
-            <header className="container z-40 bg-background">
-                <div className="flex h-20 items-center justify-between py-6">
+            <header className="border-b z-40 bg-background">
+                <div className=" container flex h-20 items-center justify-between py-6">
                     <MainNav items={marketingConfig.mainNav} />
                     <div className="flex flex-row items-center space-x-4">
                         <PremiumButton />
@@ -55,7 +58,12 @@ export default async function MarketingLayout({
 
                 </div>
             </header>
-            <main className="flex-1">{children}</main>
+            <div className=" grid flex-1 gap-12 md:grid-cols-[200px_1fr]">
+                <Sidebar />
+                <main className="flex w-full flex-1 flex-col overflow-hidden">
+                    {children}
+                </main>
+            </div>
             <SiteFooter />
         </div>
     )

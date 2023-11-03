@@ -1,10 +1,11 @@
 import { Companion } from '@prisma/client';
 import type { FC } from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../ui/card';
 import Image from 'next/image';
 import { Badge } from '../ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import { Icons } from '../icons';
+import { Button } from '../ui/button';
 
 interface CompanionCardProps {
     companion: Companion & {
@@ -38,6 +39,11 @@ const CompanionCard: FC<CompanionCardProps> = ({
                     {companion.illness}
                 </Badge>
             </CardContent>
+            <CardFooter>
+                <Button className='w-full' variant='secondary'>
+                    Chat
+                </Button>
+            </CardFooter>
         </Card>
 
     );

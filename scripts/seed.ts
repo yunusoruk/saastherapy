@@ -36,4 +36,21 @@ async function companion() {
   }
 }
 
-companion();
+async function companionUpdate() {
+  try {
+    await db.companion.update({
+      where: {
+        id: "aa0723ba-b4fa-43a5-91fb-e72998c9e5aa",
+      },
+      data: {
+        illness: "bipolar",
+      },
+    });
+  } catch (error) {
+    console.error("Error seeding default categories:", error);
+  } finally {
+    await db.$disconnect();
+  }
+}
+
+companionUpdate();

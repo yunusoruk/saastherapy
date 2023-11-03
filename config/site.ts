@@ -2,7 +2,8 @@ import { SiteConfig } from "@/types";
 
 export const siteConfig: SiteConfig = {
   name: "SaaS Therapy",
-  description: "SaasTherapy | Get ready ..",
+  description:
+    "SaasTherapy | Elevate your mental well-being with SaaS Therapy's AI companions, providing practice opportunities for psychology students and compassionate support for those seeking a listening ear.",
   url: "https://saastherapy.com",
   ogImage: "https://saastherapy.com/og.jpg",
   links: {

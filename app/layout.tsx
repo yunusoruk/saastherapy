@@ -24,22 +24,20 @@ export const metadata = {
   },
   description: siteConfig.description,
   keywords: [
-    "Therapy",
+    "SaaS Therapy",
+    "Online Therapist",
     "Psychology",
     "Depression",
-    "Saas",
-    "Mental",
-    "AI",
-    "Student",
-    "Companion"
+    "Mental Health",
+    "Therapy Session",
   ],
   authors: [
     {
-      name: "yo",
+      name: "saastherapy",
       url: "https://saastherapy.com",
     },
   ],
-  creator: "yo",
+  creator: "saastherapy",
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "white" },
     { media: "(prefers-color-scheme: dark)", color: "black" },
@@ -57,7 +55,7 @@ export const metadata = {
     title: siteConfig.name,
     description: siteConfig.description,
     images: [`${siteConfig.url}/og.jpg`],
-    creator: "@yo",
+    creator: "@saastherapy",
   },
   icons: {
     icon: "/favicon.ico",

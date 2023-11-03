@@ -12,7 +12,6 @@ const TherapyPage: FC<TherapyPageProps> = async ({ searchParams }) => {
     return (
         <div className="bg-secondary w-full h-full">
             <div className="max-w-3xl mx-auto h-full">
-                <CompanionList />
             </div>
 
         </div>

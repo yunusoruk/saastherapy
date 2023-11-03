@@ -24,16 +24,19 @@ export const metadata = {
   },
   description: siteConfig.description,
   keywords: [
-    "Next.js",
-    "React",
-    "Tailwind CSS",
-    "Server Components",
-    "Radix UI",
+    "Therapy",
+    "Psychology",
+    "Depression",
+    "Saas",
+    "Mental",
+    "AI",
+    "Student",
+    "Companion"
   ],
   authors: [
     {
       name: "yo",
-      url: "https://yo.io",
+      url: "https://saastherapy.com",
     },
   ],
   creator: "yo",

@@ -1,5 +1,6 @@
 generator client {
   provider = "prisma-client-js"
+  previewFeatures = ["fullTextSearch", "fullTextIndex"]
 }
 
 datasource db {
@@ -56,6 +57,8 @@ model User {
 
   accounts Account[]
   sessions Session[]
+  messages Message[]
+
 
   @@map(name: "users")
 }
@@ -67,4 +70,49 @@ model VerificationToken {
 
   @@unique([identifier, token])
   @@map(name: "verification_tokens")
+}
+
+model Category {
+  id            String @id @default(uuid())
+  name          String
+  companions    Companion[]
+}
+
+model Companion {
+  id            String @id @default(uuid())
+  image         String
+  name          String @db.Text
+  description   String
+  instructions  String @db.Text
+  seed          String @db.Text
+
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  category      Category @relation(fields: [categoryId], references: [id])
+  categoryId    String
+
+  messages      Message[]
+  @@index([categoryId])
+  @@fulltext([name])
+}
+
+enum Role {
+  user
+  system
+}
+
+model Message {
+  id          String   @id @default(uuid())
+  role        Role
+  content     String   @db.Text
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  companionId String
+  companion   Companion @relation(fields: [companionId], references: [id], onDelete: Cascade)
+  userId      String
+  user        User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@index([companionId])
+  @@index([userId])
 }

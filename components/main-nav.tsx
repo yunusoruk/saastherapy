@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils"
 import { MobileNav } from "@/components/mobile-nav"
 import { Command as Logo, X } from 'lucide-react'
 import { Icons } from "./icons"
+import Image from "next/image"
 
 interface MainNavProps {
     items?: MainNavItem[]
@@ -24,10 +25,13 @@ export function MainNav({ items, children }: MainNavProps) {
         <div className="flex gap-6 md:gap-10">
             <Link href="/" className="hidden items-center space-x-2 md:flex">
                 <Icons.logo className="text-primary" />
-                <span className="hidden font-bold sm:inline-block text-xl ">
-                    {siteConfig.name}
-                </span>
 
+                <p className="hidden font-bold sm:inline-block text-xl  ">
+                    <span className="text-primary">
+                        SaaS
+                    </span>{" "}
+                    Therapy
+                </p>
             </Link>
             {items?.length ? (
                 <nav className="hidden gap-6 md:flex">

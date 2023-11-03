@@ -7,6 +7,7 @@ import { siteConfig } from '@/config/site'
 import { ThemeProvider } from '@/components/theme-provider'
 import { Analytics } from '@/components/analytics'
 import { Toaster } from '@/components/ui/toaster'
+import { TailwindIndicator } from '@/components/tailwind-indicator'
 
 const fontSans = FontSans({ subsets: ['latin'], variable: "--font-sans" })
 
@@ -82,6 +83,7 @@ export default function RootLayout({
       >
         <ThemeProvider attribute='class' defaultTheme='system' enableSystem >
           {children}
+          <TailwindIndicator />
           <Analytics />
           <Toaster />
         </ThemeProvider>

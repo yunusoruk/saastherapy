@@ -62,7 +62,7 @@ export const Sidebar: FC<SidebarProps> = ({ children }) => {
 
     return (
         <>
-            <aside className={cn("w-60 flex-col md:flex  relative",
+            <aside className={cn("w-60 flex-col flex relative ",
                 isResetting && "transition-all ease-in-out duration-200",
                 isCollapsed && "w-0 border-none"
             )}>
@@ -75,7 +75,7 @@ export const Sidebar: FC<SidebarProps> = ({ children }) => {
                 </Button> */}
 
 
-                <div className="flex flex-row justify-between pt-2 pr-2 pb-2 space-x-2">
+                <div className="flex  justify-between pt-2 pr-2 pb-2 space-x-2">
                     <Button variant="outline" className={cn("space-x-2 w-[180px]",
                         isResetting && "transition-all ease-in-out duration-200",
                         isCollapsed ? "hidden disabled" : ""
@@ -91,7 +91,8 @@ export const Sidebar: FC<SidebarProps> = ({ children }) => {
                         isResetting && "transition-all ease-in-out duration-200",
                         isCollapsed && "hidden disabled"
                     )}>
-                        <Icons.panelRight className="text-muted-foreground" />
+                        {/* <Icons.panelRight className="text-muted-foreground" /> */}
+                        <Icons.left className="text-muted-foreground" />
                     </Button>
                 </div>
 
@@ -101,7 +102,9 @@ export const Sidebar: FC<SidebarProps> = ({ children }) => {
                     isResetting && "transition-all ease-in-out duration-200",
                     !isCollapsed && "hidden disabled"
                 )}>
-                    <Icons.panelLeft className="text-muted-foreground" />
+                    {/* <Icons.panelLeft className="text-muted-foreground" /> */}
+                    <Icons.right className="text-muted-foreground" />
+
                 </Button>
                 {children}
             </main>

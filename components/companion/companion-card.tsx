@@ -1,3 +1,5 @@
+"use client"
+
 import { Companion } from '@prisma/client';
 import type { FC } from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../ui/card';
@@ -6,6 +8,7 @@ import { Badge } from '../ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import { Icons } from '../icons';
 import { Button } from '../ui/button';
+import { toast } from '../ui/use-toast';
 
 interface CompanionCardProps {
     companion: Companion & {
@@ -40,7 +43,7 @@ const CompanionCard: FC<CompanionCardProps> = ({
                 </Badge>
             </CardContent>
             <CardFooter>
-                <Button className='w-full' variant='secondary'>
+                <Button className='w-full' variant='secondary' onClick={() => toast({ description: "Chat will be available soon." })} >
                     Chat
                 </Button>
             </CardFooter>

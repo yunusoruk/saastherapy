@@ -9,7 +9,7 @@ import { Separator } from "../ui/separator";
 
 export const Hero: React.FC = () => {
   return (
-    <section>
+    <section id="hero">
       <div className="relative max-w-6xl min-h-screen px-4 mx-auto sm:px-6">
         <Particles className="absolute inset-0 -z-10 " />
         <div className="pt-32 pb-16 md:pt-52 md:pb-32">
@@ -33,7 +33,7 @@ export const Hero: React.FC = () => {
                 Seek Psychologist Guidance.
               </ReactWrapBalancer>
             </h1>
-            <p className="mb-8 text-lg " data-aos="fade-down" data-aos-delay="200">
+            <p className="mb-8 text-lg md:text-xl text-muted-foreground " data-aos="fade-down" data-aos-delay="200">
               Empower Psychology Students with AI-Powered Practice Sessions
             </p>
             <div className="space-x-4">

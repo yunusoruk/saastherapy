@@ -12,7 +12,7 @@ export const Hero: React.FC = () => {
     <section id="hero">
       <div className="relative max-w-6xl min-h-screen px-4 mx-auto sm:px-6">
         <Particles className="absolute inset-0 -z-10 " />
-        <div className="pt-16 sm:pt-32 pb-16 md:pt-52 md:pb-32">
+        <div className="pt-8 sm:pt-32 pb-16 md:pt-52 md:pb-32">
           <div className="container mx-auto text-center">
             <div className="mb-6" data-aos="fade-down">
               <Link

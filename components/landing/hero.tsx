@@ -17,7 +17,7 @@ export const Hero: React.FC = () => {
             <div className="mb-6" data-aos="fade-down">
               <Link
                 href="/companion"
-                className="inline-flex items-center rounded-lg bg-muted px-3 py-1 text-sm font-medium cursor-pointer"
+                className="inline-flex items-center rounded-lg bg-muted px-3 py-1 text-sm font-medium cursor-pointer  dark:bg-background dark:hover:bg-muted transition-all"
               >
                 <span>Explore the World of SaaS Therapy</span>
                 <Icons.arrowRight className="ml-1 h-4 w-4 hidden sm:inline" />
@@ -33,7 +33,7 @@ export const Hero: React.FC = () => {
               Empower Psychology Students with AI-Powered Practice Sessions
             </p>
             <div className="flex flex-col items-center justify-center sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4">
-              <Link href="/login" className={cn(buttonVariants({ size: 'lg', variant: 'outline', className: "w-[180px] bg-primary" }))}>
+              <Link href="/login" className={cn("", buttonVariants({ size: 'lg', variant: 'outline', className: "w-[180px] bg-primary hover:bg-primary/90 text-white hover:text-white" }))}>
                 Get Started
               </Link>
               <Link href={siteConfig.links.twitter} target="_blank" className={cn(buttonVariants({ size: "lg", variant: 'outline', className: "w-[180px]" }))}>

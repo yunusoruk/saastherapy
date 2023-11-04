@@ -38,7 +38,12 @@ export const Hero: React.FC = () => {
                 Get Started
               </Link>
               <Link href={siteConfig.links.twitter} target="_blank" className={cn(buttonVariants({ size: "lg", variant: 'outline', className: "w-[180px]" }))}>
-                Fallow along on X
+                <span className="hidden sm:inline">
+                  Fallow along on X
+                </span>
+                <span className="inline sm:hidden">
+                  Fallow on X
+                </span>
               </Link>
             </div>
           </div>

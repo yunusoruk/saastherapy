@@ -100,7 +100,9 @@ export const Sidebar: FC<SidebarProps> = ({ children }) => {
             <main className="flex w-full  flex-1 flex-col overflow-hidden relative">
                 <Button variant='outline' size='icon' onClick={resetWidth} className={cn("absolute top-2 left-2",
                     isResetting && "transition-all ease-in-out duration-200",
-                    !isCollapsed && "hidden disabled"
+                    !isCollapsed && "hidden disabled",
+                    isCollapsed && "left-0"
+
                 )}>
                     {/* <Icons.panelLeft className="text-muted-foreground" /> */}
                     <Icons.right className="text-muted-foreground" />

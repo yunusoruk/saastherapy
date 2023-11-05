@@ -89,6 +89,8 @@ model Companion {
   id            String @id @default(uuid())
   image         String
   name          String @db.Text
+  age           String?
+  flag          String?
   illness       Illness?
   description   String
   instructions  String @db.Text

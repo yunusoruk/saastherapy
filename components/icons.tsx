@@ -14,6 +14,7 @@ import {
     CreditCard,
     File,
     FileText,
+    Flag,
     HeartHandshake,
     HelpCircle,
     Home,
@@ -45,6 +46,7 @@ import {
 
 
 export const Icons = {
+    flag: Flag,
     person: PersonStanding,
     book: Book,
     sunmoon: SunMoon,

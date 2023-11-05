@@ -97,7 +97,7 @@ export const Sidebar: FC<SidebarProps> = ({ children }) => {
                 </div>
 
             </aside>
-            <main className="flex w-full flex-1 flex-col overflow-hidden relative">
+            <main className="flex w-full  flex-1 flex-col overflow-hidden relative">
                 <Button variant='outline' size='icon' onClick={resetWidth} className={cn("absolute top-2 left-2",
                     isResetting && "transition-all ease-in-out duration-200",
                     !isCollapsed && "hidden disabled"

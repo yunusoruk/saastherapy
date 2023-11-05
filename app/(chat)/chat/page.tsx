@@ -1,5 +1,6 @@
 import ChatClient from '@/components/chat/chat-client';
 import CompanionList from '@/components/companion/companion-list';
+import { Particles } from '@/components/landing/particles';
 import { prismadb } from '@/lib/prismadb';
 import { Metadata } from 'next';
 import type { FC } from 'react';
@@ -35,7 +36,7 @@ const TherapyPage: FC<TherapyPageProps> = async ({ searchParams }) => {
     }
 
     return (
-        <div className="bg-secondary w-full h-full">
+        <div className="bg-background w-full h-full ">
             <ChatClient
                 companion={companion} />
 

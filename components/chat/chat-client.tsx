@@ -8,7 +8,7 @@ interface ChatClientProps {
 
 const ChatClient: FC<ChatClientProps> = ({ companion }) => {
     return (
-        <div className="max-w-3xl mx-auto h-full p-6">
+        <div className="max-w-3xl mx-auto h-full p-2">
             <ChatHeader
                 companion={companion}
             />

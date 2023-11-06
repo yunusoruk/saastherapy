@@ -26,7 +26,45 @@ export default async function MarketingLayout({
     const user = await getCurrentUser()
 
     return (
-        <div className="flex min-h-screen flex-col">
+        // <div className="flex min-h-screen flex-col">
+        //     <header className="border-b z-40 bg-background">
+        //         <div className=" container flex h-20 items-center justify-between py-6">
+        //             <MainNav items={marketingConfig.mainNav} />
+        //             <div className="flex flex-row items-center space-x-4">
+        //                 <PremiumButton />
+        //                 <ModeToggle />
+        //                 {user ? (
+        //                     <UserAccountNav
+        //                         user={{
+        //                             name: user.name,
+        //                             image: user.image,
+        //                             email: user.email,
+        //                         }}
+        //                     />
+        //                 ) : (
+        //                     <nav>
+        //                         <Link
+        //                             href="/login"
+        //                             className={cn(
+        //                                 buttonVariants({ variant: "secondary", size: "sm" }),
+        //                                 "px-4"
+        //                             )}
+        //                         >
+        //                             Login
+        //                         </Link>
+        //                     </nav>
+        //                 )}
+        //             </div>
+        //         </div>
+        //     </header>
+        //     <div className="container flex-1 flex">
+        //         <Sidebar>
+        //             {children}
+        //         </Sidebar>
+
+        //     </div>
+        // </div>
+        <div className="h-full flex flex-col container">
             <header className="border-b z-40 bg-background">
                 <div className=" container flex h-20 items-center justify-between py-6">
                     <MainNav items={marketingConfig.mainNav} />
@@ -57,15 +95,9 @@ export default async function MarketingLayout({
                     </div>
                 </div>
             </header>
-            {/* <div className="container grid flex-1 md:grid-cols-[200px_1fr]"> */}
-            <div className="container flex-1 flex">
-                <Sidebar>
-                    {children}
-                </Sidebar>
-
-            </div>
-
-            {/* <SiteFooter /> */}
+            <main className="flex-1 h-full overflow-y-auto">
+                {children}
+            </main>
         </div>
     )
 }

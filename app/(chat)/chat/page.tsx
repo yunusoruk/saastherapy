@@ -2,6 +2,7 @@ import ChatClient from '@/components/chat/chat-client';
 import CompanionList from '@/components/companion/companion-list';
 import { Particles } from '@/components/landing/particles';
 import { prismadb } from '@/lib/prismadb';
+import { getCurrentUser } from '@/lib/session';
 import { Metadata } from 'next';
 import type { FC } from 'react';
 
@@ -19,9 +20,20 @@ interface TherapyPageProps {
 
 const TherapyPage: FC<TherapyPageProps> = async ({ searchParams }) => {
 
+    const currentUser = await getCurrentUser()
+
+    if (!currentUser) {
+        return
+    }
+
+
+
     const companion = await prismadb.companion.findUnique({
         where: {
             id: "aa0723ba-b4fa-43a5-91fb-e72998c9e5aa"
+        },
+        include: {
+            messages: true
         }
     })
 
@@ -38,8 +50,13 @@ const TherapyPage: FC<TherapyPageProps> = async ({ searchParams }) => {
     return (
         <div className="bg-background w-full h-full ">
             <ChatClient
-                companion={companion} />
-
+                companion={companion}
+                user={{
+                    name: currentUser.name || null,
+                    image: currentUser.image || null,
+                    email: currentUser.email || null,
+                }}
+            />
         </div>
     );
 }

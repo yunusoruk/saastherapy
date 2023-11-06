@@ -1,77 +1,87 @@
-import { User } from "@prisma/client"
-import type { Icon } from "lucide-react"
+import { User } from "@prisma/client";
+import type { Icon } from "lucide-react";
 
-import { Icons } from "@/components/icons"
-import { type } from "os"
+import { Icons } from "@/components/icons";
+import { type } from "os";
+
+export type CompanionChatItem = {
+  name: string;
+  id: string;
+  image: string;
+};
+
+export type CompanionsConfig = {
+  companions: CompanionChatItem[];
+};
 
 export type NavItem = {
-  title: string
-  href: string
-  disabled?: boolean
-}
+  title: string;
+  href: string;
+  disabled?: boolean;
+};
 
-export type MainNavItem = NavItem
+export type MainNavItem = NavItem;
 
 export type RoleItem = {
-  id: string
-  name: string
-}
+  id: string;
+  name: string;
+};
 
 export type SidebarNavItem = {
-  title: string
-  disabled?: boolean
-  external?: boolean
-  icon?: keyof typeof Icons
+  title: string;
+  disabled?: boolean;
+  external?: boolean;
+  icon?: keyof typeof Icons;
 } & (
   | {
-      href: string
-      items?: never
+      href: string;
+      items?: never;
     }
   | {
-      href?: string
-      items: NavLink[]
+      href?: string;
+      items: NavLink[];
     }
-)
+);
 
 export type SiteConfig = {
-  name: string
-  description: string
-  url: string
-  ogImage: string
+  name: string;
+  description: string;
+  url: string;
+  ogImage: string;
   links: {
-    twitter: string
-    github: string
-    mail: string
-  }
-}
+    twitter: string;
+    github: string;
+    mail: string;
+  };
+};
 
 export type DocsConfig = {
-  mainNav: MainNavItem[]
-  sidebarNav: SidebarNavItem[]
-}
+  mainNav: MainNavItem[];
+  sidebarNav: SidebarNavItem[];
+};
 
 export type MarketingConfig = {
-  mainNav: MainNavItem[]
-}
+  mainNav: MainNavItem[];
+};
 
 export type DashboardConfig = {
-  mainNav: MainNavItem[]
-  sidebarNav: SidebarNavItem[]
-  sidebarAdminNav: SidebarNavItem[]
-}
+  mainNav: MainNavItem[];
+  sidebarNav: SidebarNavItem[];
+  sidebarAdminNav: SidebarNavItem[];
+};
 
 export type SubscriptionPlan = {
-  name: string
-  description: string
-  stripePriceId: string
-}
+  name: string;
+  description: string;
+  stripePriceId: string;
+};
 
 export type AdminConfig = {
-  roles: RoleItem[] 
-}
+  roles: RoleItem[];
+};
 
 export type UserSubscriptionPlan = SubscriptionPlan &
   Pick<User, "stripeCustomerId" | "stripeSubscriptionId"> & {
-    stripeCurrentPeriodEnd: number
-    isPro: boolean
-  }
+    stripeCurrentPeriodEnd: number;
+    isPro: boolean;
+  };

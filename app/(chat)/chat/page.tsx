@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 interface TherapyPageProps {
     searchParams: {
-        name: string
+        companion: string
     }
 }
 
@@ -26,11 +26,21 @@ const TherapyPage: FC<TherapyPageProps> = async ({ searchParams }) => {
         return
     }
 
+    if (searchParams.companion === undefined) {
+        return (
+            <div className="">
+                <div className="max-w-3xl mx-auto h-full">
+                    No companion
+                </div>
+            </div>
+        )
+    }
+
 
 
     const companion = await prismadb.companion.findUnique({
         where: {
-            id: "aa0723ba-b4fa-43a5-91fb-e72998c9e5aa"
+            id: searchParams.companion
         },
         include: {
             messages: true
@@ -39,8 +49,8 @@ const TherapyPage: FC<TherapyPageProps> = async ({ searchParams }) => {
 
     if (!companion) {
         return (
-            <div className="">
-                <div className="max-w-3xl mx-auto h-full">
+            <div className="bg-background w-full h-full ">
+                <div className="flex flex-col h-full max-w-3xl mx-auto  pt-2">
                     No companion
                 </div>
             </div>

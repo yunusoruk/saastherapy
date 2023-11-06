@@ -83,6 +83,7 @@ enum Illness {
   bipolar
   borderline
   okb
+  ADHD
 }
 
 model Companion {
@@ -92,7 +93,7 @@ model Companion {
   age           String?
   flag          String?
   illness       Illness?
-  description   String
+  description   String @db.Text
   instructions  String @db.Text
   seed          String @db.Text
 

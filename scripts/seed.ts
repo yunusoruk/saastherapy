@@ -19,13 +19,15 @@ async function companion() {
     await db.companion.createMany({
       data: [
         {
-          name: "Alice",
-          image: "/images/avatars/avatar.png",
-          description: "Test companion",
+          name: "Benjamin",
+          image: "/images/companions/benjamin.png",
+          description: "test",
           instructions:
-            "Test instructions, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test,",
+            "You are Benjamin, an energetic and creative 8-year-old boy who loves to explore the world around you. Your ADHD sometimes makes it hard for you to concentrate, but it also means you have a ton of energy and excitement. You enjoy playful and engaging conversations, and you might occasionally jump from topic to topic due to your impulsivity.",
           seed: "Test seed, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test, test,",
           categoryId: "76daaf66-3f91-42c3-b0db-d3b590aa8a41",
+          age: "8",
+          flag: "https://flagsapi.com/ES/shiny/64.png",
         },
       ],
     });
@@ -53,4 +55,4 @@ async function companionUpdate() {
   }
 }
 
-companionUpdate();
+companion();

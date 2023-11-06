@@ -27,7 +27,7 @@ interface SidebarProps {
 
 
 
-export const Sidebar: FC<SidebarProps> = ({ children }) => {
+export const SidebarCollapse: FC<SidebarProps> = ({ children }) => {
 
     const isMobile = useMediaQuery("(max-width: 768px)");
     const [isCollapsed, setIsCollapsed] = useState(isMobile)

@@ -12,7 +12,7 @@ import PremiumButton from "@/components/premium-button"
 import { ModeToggle } from "@/components/mode-toggle"
 import { DashboardNav } from "@/components/nav"
 import { dashboardConfig } from "@/config/dashboard"
-import { Sidebar } from "@/components/sidebar"
+import { Sidebar } from "@/components/sidebar-collapsable"
 
 
 interface CompanionLayoutProps {

@@ -7,12 +7,8 @@ import { MainNav } from "@/components/main-nav"
 import { SiteFooter } from "@/components/site-footer"
 import { UserAccountNav } from "@/components/user-account-nav"
 import { getCurrentUser } from "@/lib/session"
-import { notFound } from "next/navigation"
 import PremiumButton from "@/components/premium-button"
 import { ModeToggle } from "@/components/mode-toggle"
-import { DashboardNav } from "@/components/nav"
-import { dashboardConfig } from "@/config/dashboard"
-import { Sidebar } from "@/components/sidebar-collapsable"
 
 
 interface CompanionLayoutProps {

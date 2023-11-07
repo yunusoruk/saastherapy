@@ -9,6 +9,7 @@ import { notFound } from "next/navigation"
 import PremiumButton from "@/components/premium-button"
 import { ModeToggle } from "@/components/mode-toggle"
 import ChatSidebar from "@/components/chat/chat-sidebar"
+import ChatNoAccount from "@/components/chat/chat-no-account-client"
 
 
 interface MarketingLayoutProps {
@@ -53,16 +54,27 @@ export default async function MarketingLayout({
                     </div>
                 </div>
             </header>
+            {
+                user
+                    ?
+                    (
+                        <main className="flex-1 h-full overflow-y-auto flex lg:flex-cols-4  container space-x-4">
+                            <ChatSidebar />
+                            {children}
+                            <div className="border rounded-md my-4 hidden xl:flex ">
+                                <div className="w-60">
 
-            <main className="flex-1 h-full overflow-y-auto flex lg:flex-cols-4  container space-x-4">
-                <ChatSidebar />
-                {children}
-                <div className="border rounded-md my-4 hidden xl:flex ">
-                    <div className="w-60">
-
-                    </div>
-                </div>
-            </main>
+                                </div>
+                            </div>
+                        </main>
+                    )
+                    :
+                    (
+                        <main className="flex-1 h-full overflow-y-auto flex lg:flex-cols-4  container space-x-4">
+                            <ChatNoAccount />
+                        </main>
+                    )
+            }
         </div>
     )
 }

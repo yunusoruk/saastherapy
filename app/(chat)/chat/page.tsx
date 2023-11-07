@@ -1,5 +1,9 @@
+import { PageHeader, PageHeaderDescription, PageHeaderHeading } from '@/components/page-header';
+import { buttonVariants } from '@/components/ui/button';
 import { getCurrentUser } from '@/lib/session';
+import { cn } from '@/lib/utils';
 import { Metadata } from 'next';
+import Link from 'next/link';
 import type { FC } from 'react';
 
 
@@ -14,23 +18,10 @@ interface ChatPageProps {
 
 const ChatPage: FC<ChatPageProps> = async ({ }) => {
 
-    const currentUser = await getCurrentUser()
-
-    if (!currentUser) {
-        return (
-            <div className="">
-                {/* TODO */}
-                Please sign in to chat
-            </div>
-        )
-    }
-
-
-
-
+    // const currentUser = await getCurrentUser()
 
     return (
-        <div className="bg-background w-full h-full ">
+        <div className="bg-background w-full h-full py-4">
             {/* TODO */}
             No companion
         </div>

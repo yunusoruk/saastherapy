@@ -32,7 +32,14 @@ const ChatIdPage: FC<ChatIdPageProps> = async ({ params }) => {
             id: params.chatId
         },
         include: {
-            messages: true
+            messages: {
+                where: {
+                    userId: currentUser.id
+                },
+                orderBy: {
+                    createdAt: "asc"
+                }
+            }
         }
     })
 

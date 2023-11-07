@@ -79,7 +79,7 @@ const CompanionCard: FC<CompanionCardProps> = ({
                 </div>
             </CardContent>
             <CardFooter>
-                <Button className='w-full' variant='secondary' onClick={chatHandle} >
+                <Button className='w-full' variant='secondary' onClick={() => router.push(`/chat/${companion.id}`)} >
                     Chat
                 </Button>
             </CardFooter>

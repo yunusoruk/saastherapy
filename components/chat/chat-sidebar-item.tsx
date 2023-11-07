@@ -39,13 +39,13 @@ const ChatSidebarItem: FC<ChatSidebarItemProps> = ({ companion }) => {
         <TooltipProvider>
             <Tooltip delayDuration={50}>
                 <TooltipTrigger asChild>
-                    <div className='flex flex-row items-center space-x-4 border rounded-md p-2 bg-card hover:bg-accent cursor-pointer' onClick={handleClick}>
+                    <div className='flex flex-row items-center space-x-4 border rounded-md p-2 bg-card hover:bg-accent cursor-pointer' onClick={() => router.push(`/chat/${companion.id}`)}>
                         <Avatar className='h-10 w-10'>
                             <AvatarImage src={companion.image} />
                         </Avatar>
-                        <Label className='text-lg'>
+                        <p className='text-lg font-medium'>
                             {companion.name}
-                        </Label>
+                        </p>
                     </div>
                 </TooltipTrigger>
                 <TooltipContent side='right' align='center'>

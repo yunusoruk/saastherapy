@@ -37,15 +37,15 @@ const CompanionCard: FC<CompanionCardProps> = ({
 
     return (
         <Card>
-            <CardHeader className="flex flex-row items-center space-x-4">
+            <CardHeader className="flex flex-col space-y-4">
                 <Avatar className='h-16 w-16'>
                     <AvatarImage src={companion.image} />
                     <AvatarFallback>
                         <Icons.user className="h-8 w-8 text-muted-foreground" />
                     </AvatarFallback>
                 </Avatar>
-                <div className="flex flex-col  space-y-1">
-                    <CardTitle className='space-x-2 mb-1 flex flex-row ' >
+                <div className="flex flex-col space-y-2">
+                    <CardTitle className='space-x-2 flex flex-row ' >
                         <span>
                             {companion.name}
                         </span>
@@ -58,9 +58,6 @@ const CompanionCard: FC<CompanionCardProps> = ({
                     </CardTitle>
                     <CardDescription>
                         Age:{" "}{companion.age}
-                    </CardDescription>
-                    <CardDescription>
-                        {" "}
                     </CardDescription>
                 </div>
             </CardHeader>

@@ -9,7 +9,7 @@ interface PremiumButtonProps { }
 const PremiumButton: FC<PremiumButtonProps> = ({ }) => {
     return (
         <Link
-            className={cn("hidden sm:flex", buttonVariants({ size: 'premium', variant: 'premium' }))}
+            className={cn("hidden md:flex", buttonVariants({ size: 'premium', variant: 'premium' }))}
             href='/pricing'
         >
             Upgrade

@@ -15,7 +15,7 @@ const ChatSidebar: FC<ChatSidebarProps> = ({ className }) => {
 
     return (
         <>
-            <div className={cn("hidden lg:flex flex-col h-full bg-background", className)}>
+            <div className={cn("hidden lg:flex flex-col h-full bg-background lg:col-span-3", className)}>
                 <Link
                     href='/companion'
                     className={cn("mt-4 mb-4", buttonVariants({ variant: 'outline' }))}

@@ -53,9 +53,15 @@ export default async function MarketingLayout({
                     </div>
                 </div>
             </header>
-            <main className="flex-1 h-full overflow-y-auto flex flex-row container">
+
+            <main className="flex-1 h-full overflow-y-auto flex lg:flex-cols-4  container space-x-4">
                 <ChatSidebar />
                 {children}
+                <div className="border rounded-md my-4 hidden xl:flex ">
+                    <div className="w-60">
+
+                    </div>
+                </div>
             </main>
         </div>
     )

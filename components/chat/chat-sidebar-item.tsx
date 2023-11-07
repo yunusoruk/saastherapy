@@ -12,7 +12,8 @@ import {
     TooltipTrigger,
 } from "@/components/ui/tooltip"
 import qs from "query-string";
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
+import { cn } from '@/lib/utils';
 
 
 interface ChatSidebarItemProps {
@@ -22,24 +23,20 @@ interface ChatSidebarItemProps {
 const ChatSidebarItem: FC<ChatSidebarItemProps> = ({ companion }) => {
 
     const router = useRouter();
+    const path = usePathname()
 
-    const handleClick = () => {
-        const url = qs.stringifyUrl({
-            url: "/chat",
-            query: {
-                companion: companion.id
-            }
-        })
-        router.push(url)
-        router.refresh()
+    console.log(path);
 
-    }
+
 
     return (
         <TooltipProvider>
             <Tooltip delayDuration={50}>
                 <TooltipTrigger asChild>
-                    <div className='flex flex-row items-center space-x-4 border rounded-md p-2 bg-card hover:bg-accent cursor-pointer' onClick={() => router.push(`/chat/${companion.id}`)}>
+                    <div className={cn('flex flex-row items-center space-x-4 border rounded-md p-2 bg-card hover:bg-accent cursor-pointer',
+                        path === `/chat/${companion.id}` ? "bg-accent" : "bg-card",
+                    )}
+                        onClick={() => router.push(`/chat/${companion.id}`)}>
                         <Avatar className='h-10 w-10'>
                             <AvatarImage src={companion.image} />
                         </Avatar>

@@ -52,7 +52,7 @@ const ChatClient: FC<ChatClientProps> = ({ companion, user }) => {
     }
 
     return (
-        <div className="flex flex-col h-full max-w-3xl mx-auto  pt-4">
+        <div className="flex flex-col h-full pt-4">
             <ChatHeader
                 companion={companion}
             />

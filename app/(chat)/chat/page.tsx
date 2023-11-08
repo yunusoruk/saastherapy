@@ -1,3 +1,4 @@
+import ChatNoCompanion from '@/components/chat/chat-no-companion';
 import { PageHeader, PageHeaderDescription, PageHeaderHeading } from '@/components/page-header';
 import { buttonVariants } from '@/components/ui/button';
 import { getCurrentUser } from '@/lib/session';
@@ -22,8 +23,7 @@ const ChatPage: FC<ChatPageProps> = async ({ }) => {
 
     return (
         <div className="bg-background w-full h-full py-4">
-            {/* TODO */}
-            No companion
+            <ChatNoCompanion />
         </div>
     );
 }

@@ -60,7 +60,7 @@ const ChatHeader: FC<ChatHeaderProps> = ({ companion }) => {
                         </CardHeader>
                     </Card>
                 </PopoverTrigger>
-                <PopoverContent className="w-full max-w-3xl mx-2">
+                <PopoverContent className="mx-2">
                     <div className="grid gap-4">
                         <div className="space-y-2">
                             <h4 className="font-medium leading-none">Who is {companion.name}?</h4>

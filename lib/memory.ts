@@ -34,6 +34,7 @@ export class MemoryManager {
   ) {
     const pineconeClient = <Pinecone>this.vectorDBClient;
 
+    // Create client instance that target the index.
     const pineconeIndex = pineconeClient.Index(
       process.env.PINECONE_INDEX! || "",
     );
@@ -43,6 +44,7 @@ export class MemoryManager {
       { pineconeIndex },
     );
 
+    // Similarity search inside recent chat history, return 3 result, filter by filename.
     const similarDocs = await vectorStore
       .similaritySearch(recentChatHistory, 3, { fileName: companionFileName })
       .catch((err) => {
@@ -84,6 +86,7 @@ export class MemoryManager {
       return "";
     }
 
+    // Get history by score(date) from 0 to now, 0 is the first.
     const key = this.generateRedisCompanionKey(companionKey);
     let result = await this.history.zrange(key, 0, Date.now(), {
       byScore: true,

@@ -25,9 +25,6 @@ const ChatSidebarItem: FC<ChatSidebarItemProps> = ({ companion }) => {
     const router = useRouter();
     const path = usePathname()
 
-    console.log(path);
-
-
 
     return (
         <TooltipProvider>

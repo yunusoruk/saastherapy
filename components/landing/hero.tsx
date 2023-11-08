@@ -38,10 +38,10 @@ export const Hero: React.FC = () => {
               </Link>
               <Link href={siteConfig.links.twitter} target="_blank" className={cn(buttonVariants({ size: "lg", variant: 'outline', className: "w-[180px]" }))}>
                 <span className="hidden sm:inline">
-                  Fallow along on X
+                  Follow along on X
                 </span>
                 <span className="inline sm:hidden">
-                  Fallow on X
+                  Follow on X
                 </span>
               </Link>
             </div>

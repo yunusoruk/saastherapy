@@ -1,3 +1,4 @@
+
 import type { FC } from 'react';
 import { Button, buttonVariants } from './ui/button';
 import { Icons } from './icons';
@@ -7,9 +8,12 @@ import { cn } from '@/lib/utils';
 interface PremiumButtonProps { }
 
 const PremiumButton: FC<PremiumButtonProps> = ({ }) => {
+
     return (
         <Link
-            className={cn("", buttonVariants({ size: 'premium', variant: 'premium', className: 'hidden sm:flex' }))}
+            className={cn("",
+                buttonVariants({ size: 'premium', variant: 'premium', className: 'hidden sm:flex' }),
+            )}
             href='/pricing'
         >
             Upgrade

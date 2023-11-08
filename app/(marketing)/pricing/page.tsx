@@ -3,6 +3,7 @@ import Link from "next/link"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
+import SubscribeButton from "@/components/subscribe-button"
 
 export const metadata = {
     title: "Pricing",
@@ -53,9 +54,10 @@ export default function PricingPage() {
                             Billed Monthly
                         </p>
                     </div>
-                    <Link href="/login" className={cn(buttonVariants({ size: "lg" }))}>
+                    <SubscribeButton />
+                    {/* <Link href="/login" className={cn(buttonVariants({ size: "lg" }))}>
                         Subscribe Now
-                    </Link>
+                    </Link> */}
                 </div>
             </div>
             <div className="mx-auto flex w-full max-w-[58rem] flex-col gap-4">

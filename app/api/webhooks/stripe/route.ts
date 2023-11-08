@@ -46,13 +46,14 @@ export async function POST(req: Request) {
   }
 
   if (event.type === "invoice.payment_succeeded") {
+
     // Retrieve the subscription details from Stripe.
     const subscription = await stripe.subscriptions.retrieve(
       session.subscription as string
     )
 
     // Update the price id and set the new period end.
-    await prismadb.user.update({
+    await prismadb.user.updateMany({
       where: {
         stripeSubscriptionId: subscription.id,
       },

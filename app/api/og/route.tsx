@@ -18,6 +18,7 @@ export async function GET(req: Request) {
         const fontBold = await interBold
 
         const url = new URL(req.url)
+
         const values = ogImageSchema.parse(Object.fromEntries(url.searchParams))
         const heading =
             values.heading.length > 140
@@ -94,7 +95,7 @@ export async function GET(req: Request) {
                             tw="flex text-xl"
                             style={{ fontFamily: "Inter", fontWeight: "normal" }}
                         >
-                            tx.shadcn.com
+                            saastherapy.com
                         </div>
                         <div
                             tw="flex items-center text-xl"
@@ -116,7 +117,7 @@ export async function GET(req: Request) {
                                     stroke-linejoin="round"
                                 />
                             </svg>
-                            <div tw="flex ml-2">github.com/yunusoruk/saasthreapy</div>
+                            {/* <div tw="flex ml-2">github.com/yunusoruk/saasthreapy</div> */}
                         </div>
                     </div>
                 </div>

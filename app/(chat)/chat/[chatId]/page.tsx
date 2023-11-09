@@ -1,3 +1,4 @@
+import { ChatSkeleton } from '@/components/chat-skeleton';
 import ChatClient from '@/components/chat/chat-client';
 import CompanionList from '@/components/companion/companion-list';
 import { Particles } from '@/components/landing/particles';
@@ -57,6 +58,7 @@ const ChatIdPage: FC<ChatIdPageProps> = async ({ params }) => {
                     email: currentUser.email || null,
                 }}
             />
+            {/* <ChatSkeleton /> */}
         </div>
     );
 }

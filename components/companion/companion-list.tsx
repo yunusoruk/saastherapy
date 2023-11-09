@@ -2,6 +2,9 @@ import { prismadb } from '@/lib/prismadb';
 import type { FC } from 'react';
 import CompanionCard from './companion-card';
 import Image from 'next/image';
+import { Skeleton } from '../ui/skeleton';
+import { CardSkeleton } from '../card-skeleton';
+import { Car } from 'lucide-react';
 
 interface CompanionListProps { }
 

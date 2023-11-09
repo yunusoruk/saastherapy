@@ -5,7 +5,6 @@ import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "../ui/button";
 import { Icons } from "../icons";
-import { Separator } from "../ui/separator";
 
 export const Hero: React.FC = () => {
   return (
@@ -37,10 +36,7 @@ export const Hero: React.FC = () => {
                 Get Started
               </Link>
               <Link href={siteConfig.links.twitter} target="_blank" className={cn(buttonVariants({ size: "lg", variant: 'outline', className: "w-[180px]" }))}>
-                <span className="hidden sm:inline">
-                  Follow along on X
-                </span>
-                <span className="inline sm:hidden">
+                <span>
                   Follow on X
                 </span>
               </Link>

@@ -10,6 +10,8 @@ import { Icons } from '../icons';
 import { Button } from '../ui/button';
 import { useRouter } from 'next/navigation';
 import { Label } from '../ui/label';
+import { Skeleton } from '../ui/skeleton';
+import { CardSkeleton } from '../card-skeleton';
 
 interface CompanionCardProps {
     companion: Companion & {
@@ -22,6 +24,7 @@ interface CompanionCardProps {
 const CompanionCard: FC<CompanionCardProps> = ({
     companion
 }) => {
+
 
     const router = useRouter();
 
@@ -85,3 +88,4 @@ const CompanionCard: FC<CompanionCardProps> = ({
     );
 }
 export default CompanionCard;
+

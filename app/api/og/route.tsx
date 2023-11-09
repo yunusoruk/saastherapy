@@ -18,7 +18,6 @@ export async function GET(req: Request) {
         const fontBold = await interBold
 
         const url = new URL(req.url)
-
         const values = ogImageSchema.parse(Object.fromEntries(url.searchParams))
         const heading =
             values.heading.length > 140
@@ -26,11 +25,9 @@ export async function GET(req: Request) {
                 : values.heading
 
         const { mode } = values
-        const paint = mode === "dark" ? "#fff" : "#000"
+        const paint = mode === "dark" ? "#ffffff" : "#000000"
 
         const fontSize = heading.length > 100 ? "70px" : "100px"
-
-        console.log('Image generated successfully');
 
         return new ImageResponse(
             (
@@ -119,7 +116,9 @@ export async function GET(req: Request) {
                                     stroke-linejoin="round"
                                 />
                             </svg>
-                            {/* <div tw="flex ml-2">github.com/yunusoruk/saasthreapy</div> */}
+                            <div tw="flex ml-2">
+
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -50,14 +50,13 @@ export const metadata = {
     title: siteConfig.name,
     description: siteConfig.description,
     siteName: siteConfig.name,
-    images: [`/api/og`]
+    images: [`${siteConfig.url}/og.jpg`],
   },
   twitter: {
     card: "summary_large_image",
     title: siteConfig.name,
     description: siteConfig.description,
-    images: [`api/og`],
-    // images: [`${siteConfig.url}/og.png`],
+    images: [`${siteConfig.url}/og.jpg`],
     creator: "@saastherapy",
   },
   icons: {

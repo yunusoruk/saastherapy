@@ -30,6 +30,8 @@ export async function GET(req: Request) {
 
         const fontSize = heading.length > 100 ? "70px" : "100px"
 
+        console.log('Image generated successfully');
+
         return new ImageResponse(
             (
                 <div

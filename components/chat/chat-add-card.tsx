@@ -1,13 +1,9 @@
 import Link from "next/link";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../ui/card";
-import { cn } from "@/lib/utils";
-import { buttonVariants } from "../ui/button";
 import Image from "next/image";
 
 const ChatAddCard = () => {
     return (
         <div className="my-4 hidden xl:flex ">
-            {/* <div className='bg-card shadow-sm  group space-y-4 border rounded-lg w-60 h-60 '> */}
             <Link
                 href='/pricing'
                 className="bg-card shadow-sm  group space-y-4 border rounded-lg w-60 h-60 transition-all"
@@ -26,10 +22,7 @@ const ChatAddCard = () => {
                     </div>
                 </div>
             </Link>
-
-            {/* </div> */}
         </div>
-
     );
 }
 

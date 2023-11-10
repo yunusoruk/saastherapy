@@ -125,7 +125,7 @@ export function UserLoginForm({ className, ...props }: UserAuthFormProps) {
                 className={cn(buttonVariants({ variant: "outline" }))}
                 onClick={() => {
                     setIsGoogleLoading(true)
-                    signIn("google", { callbackUrl: "/collabrator" })
+                    signIn("google", { callbackUrl: "/" })
                 }}
                 disabled={isLoading || isGoogleLoading}
             >
@@ -141,7 +141,7 @@ export function UserLoginForm({ className, ...props }: UserAuthFormProps) {
                 className={cn(buttonVariants({ variant: "outline" }))}
                 onClick={() => {
                     setIsGitHubLoading(true)
-                    signIn("github", { callbackUrl: "/collabrator" })
+                    signIn("github", { callbackUrl: "/" })
                 }}
                 disabled={isLoading || isGitHubLoading}
             >

@@ -87,7 +87,7 @@ const ChatHeader: FC<ChatHeaderProps> = ({ companion }) => {
                         <div className="space-y-2">
                             <h4 className="font-medium leading-none">Who is {companion.name}?</h4>
                             <p className="text-sm text-muted-foreground">
-                                {companion.description}
+                                {`${companion.name} is ${companion.description}`}
                             </p>
                         </div>
                         <div className="space-y-2">

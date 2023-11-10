@@ -121,7 +121,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
                 )}{" "}
                 Google
             </button>
-            <button
+            {/* <button
                 type="button"
                 className={cn(buttonVariants({ variant: "outline" }))}
                 onClick={() => {
@@ -136,7 +136,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
                     <FaFacebook className="mr-2 h-4 w-4 fill-[#0866ff]" />
                 )}{" "}
                 Facebook
-            </button>
+            </button> */}
             <button
                 type="button"
                 className={cn(buttonVariants({ variant: "outline" }))}

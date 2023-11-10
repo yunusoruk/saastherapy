@@ -130,7 +130,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
                 }}
                 disabled={isLoading || isFacebookLoading}
             >
-                {isGitHubLoading ? (
+                {isFacebookLoading ? (
                     <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
                 ) : (
                     <FaFacebook className="mr-2 h-4 w-4 fill-[#0866ff]" />
@@ -162,7 +162,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
                 }}
                 disabled={isLoading || isDiscordLoading}
             >
-                {isGitHubLoading ? (
+                {isDiscordLoading ? (
                     <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
                 ) : (
                     <FaDiscord className="mr-2 h-4 w-4 " />

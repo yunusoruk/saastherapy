@@ -16,6 +16,7 @@ import { toast } from "@/components/ui/use-toast"
 import { Icons } from "@/components/icons"
 import { FcGoogle } from "react-icons/fc"
 import { FaDiscord } from "react-icons/fa"
+import { FaFacebook } from "react-icons/fa"
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> { }
 
@@ -31,6 +32,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
     })
     const [isLoading, setIsLoading] = React.useState<boolean>(false)
     const [isGitHubLoading, setIsGitHubLoading] = React.useState<boolean>(false)
+    const [isFacebookLoading, setIsFacebookLoading] = React.useState<boolean>(false)
     const [isGoogleLoading, setIsGoogleLoading] = React.useState<boolean>(false)
     const [isDiscordLoading, setIsDiscordLoading] = React.useState<boolean>(false)
 
@@ -118,6 +120,22 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
                     <FcGoogle className="mr-2 h-4 w-4" />
                 )}{" "}
                 Google
+            </button>
+            <button
+                type="button"
+                className={cn(buttonVariants({ variant: "outline" }))}
+                onClick={() => {
+                    setIsFacebookLoading(true)
+                    signIn("facebook")
+                }}
+                disabled={isLoading || isFacebookLoading}
+            >
+                {isGitHubLoading ? (
+                    <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+                ) : (
+                    <FaFacebook className="mr-2 h-4 w-4 fill-[#0866ff]" />
+                )}{" "}
+                Facebook
             </button>
             <button
                 type="button"

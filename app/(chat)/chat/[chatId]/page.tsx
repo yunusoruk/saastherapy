@@ -4,6 +4,7 @@ import CompanionList from '@/components/companion/companion-list';
 import { Particles } from '@/components/landing/particles';
 import { prismadb } from '@/lib/prismadb';
 import { getCurrentUser } from '@/lib/session';
+import { getUserSubscriptionPlan } from '@/lib/subscription';
 import { Metadata } from 'next';
 import { notFound, redirect } from 'next/navigation';
 import type { FC } from 'react';
@@ -27,6 +28,8 @@ const ChatIdPage: FC<ChatIdPageProps> = async ({ params }) => {
     if (!currentUser) {
         redirect(`/chat`)
     }
+
+    const { isPro } = await getUserSubscriptionPlan(currentUser.id)
 
     const companion = await prismadb.companion.findUnique({
         where: {
@@ -57,8 +60,8 @@ const ChatIdPage: FC<ChatIdPageProps> = async ({ params }) => {
                     image: currentUser.image || null,
                     email: currentUser.email || null,
                 }}
+                isPro={isPro}
             />
-            {/* <ChatSkeleton /> */}
         </div>
     );
 }

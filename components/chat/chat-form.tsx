@@ -6,6 +6,7 @@ import { ChangeEvent, FormEvent } from "react";
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { toast } from "../ui/use-toast";
 
 interface ChatFormProps {
     input: string;
@@ -20,6 +21,9 @@ export const ChatForm = ({
     onSubmit,
     isLoading,
 }: ChatFormProps) => {
+
+
+
     return (
         <form onSubmit={onSubmit} className="border-t border-primary/10 py-4 flex items-center gap-x-2">
             <Input

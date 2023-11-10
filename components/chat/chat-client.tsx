@@ -7,18 +7,21 @@ import { useCompletion } from 'ai/react'
 import { useRouter } from 'next/navigation';
 import { ChatForm } from './chat-form';
 import { ChatMessages } from './chat-messages';
+import { toast } from '../ui/use-toast';
 
 interface ChatClientProps {
     companion: Companion & {
         messages: Message[]
     }
     user: Pick<User, "name" | "image" | "email">
+    isPro: boolean
 }
 
-const ChatClient: FC<ChatClientProps> = ({ companion, user }) => {
+const ChatClient: FC<ChatClientProps> = ({ companion, user, isPro }) => {
 
     const router = useRouter()
     const [messages, setMessages] = useState<any[]>(companion.messages)
+
 
     const {
         input,
@@ -42,6 +45,13 @@ const ChatClient: FC<ChatClientProps> = ({ companion, user }) => {
     })
 
     const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+
+        if (!isPro && messages.length > 3) {
+            return toast({
+                description: "Please subscribe to sent more messages."
+            })
+        }
+
         const userMessage = {
             role: "user",
             content: input,

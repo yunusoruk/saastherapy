@@ -1,16 +1,15 @@
 "use client"
 
 import { Companion } from '@prisma/client';
-import type { FC, ReactHTMLElement } from 'react';
+import { useRef, type FC, useEffect, useState } from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import { Icons } from '../icons';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card';
+import { Card, CardDescription, CardHeader, CardTitle } from '../ui/card';
 import {
     Popover,
     PopoverContent,
     PopoverTrigger,
 } from "@/components/ui/popover"
-import { Label } from '../ui/label';
 import { Badge } from '../ui/badge';
 
 interface ChatHeaderProps {
@@ -18,11 +17,34 @@ interface ChatHeaderProps {
 }
 
 const ChatHeader: FC<ChatHeaderProps> = ({ companion }) => {
+
+    const cardRef = useRef<HTMLDivElement>(null);
+    const popoverRef = useRef<HTMLDivElement>(null);
+    const [isOpen, setIsOpen] = useState(false);
+
+    useEffect(() => {
+        const updateCardWidth = () => {
+            if (cardRef.current && popoverRef.current) {
+                popoverRef.current.style.setProperty('width', `${cardRef.current.offsetWidth}px`);
+            }
+        };
+
+        updateCardWidth(); // Initial update
+
+        window.addEventListener('resize', updateCardWidth);
+
+        setIsOpen(false)
+
+        return () => {
+            window.removeEventListener('resize', updateCardWidth);
+        };
+    }, [cardRef.current, popoverRef.current, isOpen]);
+
     return (
-        <div className="flex flex-row justify-center mb-4">
+        <div className="flex flex-row justify-center items-center mb-4">
             <Popover>
                 <PopoverTrigger asChild>
-                    <Card className='w-full cursor-pointer hover:bg-accent transition-all'>
+                    <Card ref={cardRef} className='w-full cursor-pointer hover:bg-accent transition-all' onClick={() => setIsOpen(true)}>
                         <CardHeader className="flex flex-row items-center space-x-4">
                             <Avatar className='h-16 w-16'>
                                 <AvatarImage src={companion.image} />
@@ -60,7 +82,7 @@ const ChatHeader: FC<ChatHeaderProps> = ({ companion }) => {
                         </CardHeader>
                     </Card>
                 </PopoverTrigger>
-                <PopoverContent className="mx-2">
+                <PopoverContent ref={popoverRef} >
                     <div className="grid gap-4">
                         <div className="space-y-2">
                             <h4 className="font-medium leading-none">Who is {companion.name}?</h4>

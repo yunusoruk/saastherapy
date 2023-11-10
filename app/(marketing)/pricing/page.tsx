@@ -55,9 +55,7 @@ export default function PricingPage() {
                         </p>
                     </div>
                     <SubscribeButton />
-                    {/* <Link href="/login" className={cn(buttonVariants({ size: "lg" }))}>
-                        Subscribe Now
-                    </Link> */}
+
                 </div>
             </div>
             <div className="mx-auto flex w-full max-w-[58rem] flex-col gap-4">

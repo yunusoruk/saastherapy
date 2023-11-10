@@ -1,15 +1,12 @@
 "use client"
 
-import { useState } from "react";
 import { toast } from "./ui/use-toast";
 import axios from "axios";
 import { Button } from "./ui/button";
 
-interface SubscribeButtonProps {
-    isPro?: boolean
-}
 
-const SubscribeButton = ({ isPro = false }: SubscribeButtonProps) => {
+
+const ManageSubscriptionButton = () => {
 
     const onSubscribe = async () => {
 
@@ -27,12 +24,10 @@ const SubscribeButton = ({ isPro = false }: SubscribeButtonProps) => {
     }
 
     return (
-        <Button onClick={onSubscribe} variant="premium">
-            {
-                isPro ? "Manage Subscription" : "Subscribe Now"
-            }
+        <Button onClick={onSubscribe} variant="secondary">
+            Manage Subscription
         </Button>
     );
 }
 
-export default SubscribeButton;
+export default ManageSubscriptionButton;

@@ -1,8 +1,16 @@
 import { getCurrentUser } from "@/lib/session";
 import { getUserSubscriptionPlan } from "@/lib/subscription";
 import { redirect } from "next/navigation";
+import { DashboardHeader } from "@/components/header"
+import { DashboardShell } from "@/components/shell"
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { buttonVariants } from "@/components/ui/button";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
+import ManageSubscriptionButton from "@/components/manage-subscription-button";
+import { Label } from "@/components/ui/label";
 
-const SettingsPage = async () => {
+const BillingPage = async () => {
     const user = await getCurrentUser()
     if (!user) {
         redirect('/')
@@ -11,14 +19,38 @@ const SettingsPage = async () => {
     const isPro = await getUserSubscriptionPlan(user.id);
 
     return (
-        <div className="h-full p-4 space-y-2">
-            <h3 className="text-lg font-medium">Settings</h3>
-            <div className="text-muted-foreground text-sm">
-                {isPro.isPro ? "You are currently on a Pro plan." : "You are currently on a free plan."}
-            </div>
-            {/* <SubscriptionButton isPro={isPro} /> */}
-        </div>
+        <DashboardShell>
+            <DashboardHeader
+                heading="Billing"
+                text="Manage your subscription."
+            />
+            <Card>
+                <CardHeader>
+                    <CardTitle>
+                        Subscription Details
+                    </CardTitle>
+                </CardHeader>
+                <CardContent className="">
+                    <Label className="text-muted-foreground ">
+                        {isPro.isPro ? "You are currently on a Pro plan." : "You are currently on a free plan."}
+                    </Label>
+                </CardContent>
+                <CardFooter>
+                    {!isPro.isPro
+                        ? (
+                            <Link href="/pricing" className={cn("ml-auto", buttonVariants({ variant: "premium" }))}>
+                                Subscribe Now
+                            </Link>
+                        )
+                        : (
+                            <ManageSubscriptionButton />
+                        )
+                    }
+
+                </CardFooter>
+            </Card>
+        </DashboardShell>
     );
 }
 
-export default SettingsPage;
+export default BillingPage;

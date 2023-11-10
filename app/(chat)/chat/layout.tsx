@@ -10,6 +10,7 @@ import PremiumButton from "@/components/premium-button"
 import { ModeToggle } from "@/components/mode-toggle"
 import ChatSidebar from "@/components/chat/chat-sidebar"
 import ChatNoAccount from "@/components/chat/chat-no-account-client"
+import ChatAddCard from "@/components/chat/chat-add-card"
 
 
 interface MarketingLayoutProps {
@@ -61,11 +62,7 @@ export default async function MarketingLayout({
                         <main className="flex-1 h-full overflow-y-auto flex lg:flex-cols-4  container space-x-4">
                             <ChatSidebar />
                             {children}
-                            <div className="border rounded-md my-4 hidden xl:flex ">
-                                <div className="w-60">
-
-                                </div>
-                            </div>
+                            <ChatAddCard />
                         </main>
                     )
                     :

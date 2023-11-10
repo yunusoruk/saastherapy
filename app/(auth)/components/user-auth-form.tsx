@@ -15,6 +15,7 @@ import { Label } from "@/components/ui/label"
 import { toast } from "@/components/ui/use-toast"
 import { Icons } from "@/components/icons"
 import { FcGoogle } from "react-icons/fc"
+import { FaDiscord } from "react-icons/fa"
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> { }
 
@@ -31,6 +32,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
     const [isLoading, setIsLoading] = React.useState<boolean>(false)
     const [isGitHubLoading, setIsGitHubLoading] = React.useState<boolean>(false)
     const [isGoogleLoading, setIsGoogleLoading] = React.useState<boolean>(false)
+    const [isDiscordLoading, setIsDiscordLoading] = React.useState<boolean>(false)
 
     const searchParams = useSearchParams()
 
@@ -61,7 +63,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
 
     return (
         <div className={cn("grid gap-6", className)} {...props}>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            {/* <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="grid gap-2">
                     <div className="grid gap-1">
                         <Label className="sr-only" htmlFor="email">
@@ -90,8 +92,8 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
                         Sign In with Email
                     </button>
                 </div>
-            </form>
-            <div className="relative">
+            </form> */}
+            {/* <div className="relative">
                 <div className="absolute inset-0 flex items-center">
                     <span className="w-full border-t" />
                 </div>
@@ -100,7 +102,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
                         Or continue with
                     </span>
                 </div>
-            </div>
+            </div> */}
             <button
                 type="button"
                 className={cn(buttonVariants({ variant: "outline" }))}
@@ -132,6 +134,22 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
                     <Icons.gitHub className="mr-2 h-4 w-4" />
                 )}{" "}
                 Github
+            </button>
+            <button
+                type="button"
+                className={cn(buttonVariants({ variant: "outline" }))}
+                onClick={() => {
+                    setIsDiscordLoading(true)
+                    signIn("discord")
+                }}
+                disabled={isLoading || isDiscordLoading}
+            >
+                {isGitHubLoading ? (
+                    <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+                ) : (
+                    <FaDiscord className="mr-2 h-4 w-4 " />
+                )}{" "}
+                Discord
             </button>
         </div>
     )

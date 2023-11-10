@@ -5,7 +5,6 @@ import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 import { ChevronLeft, Command as Logo } from "lucide-react"
 import { UserAuthForm } from "../components/user-auth-form"
-import { UserLoginForm } from "../components/user-login-form"
 
 export const metadata: Metadata = {
     title: "Login",
@@ -42,7 +41,7 @@ export default function LoginPage() {
                         Enter your email to sign in to your account
                     </p>
                 </div>
-                <UserLoginForm />
+                <UserAuthForm />
                 <p className="px-8 text-center text-sm text-muted-foreground">
                     <Link
                         href="/register"

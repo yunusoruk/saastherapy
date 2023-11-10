@@ -4,6 +4,7 @@ import { NextAuthOptions } from "next-auth";
 import EmailProvider from "next-auth/providers/email";
 import GitHubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
+import DiscordProvider from "next-auth/providers/discord";
 import { Client } from "postmark";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { siteConfig } from "@/config/site";
@@ -31,43 +32,47 @@ export const authOptions: NextAuthOptions = {
       clientId: process.env.GOOGLE_CLIENT_ID as string,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
     }),
-    CredentialsProvider({
-      name: "credentials",
-      credentials: {
-        email: { label: "email", type: "text" },
-        password: { label: "password", type: "password" },
-      },
-      async authorize(credentials) {
-        if (!credentials?.email || !credentials?.password) {
-          return null;
-        }
+    DiscordProvider({
+      clientId: process.env.DISCORD_CLIENT_ID as string,
+      clientSecret: process.env.DISCORD_CLIENT_SECRET as string
+    })
+    // CredentialsProvider({
+    //   name: "credentials",
+    //   credentials: {
+    //     email: { label: "email", type: "text" },
+    //     password: { label: "password", type: "password" },
+    //   },
+    //   async authorize(credentials) {
+    //     if (!credentials?.email || !credentials?.password) {
+    //       return null;
+    //     }
 
-        const user = await prismadb.user.findUnique({
-          where: {
-            email: credentials.email,
-          },
-        });
+    //     const user = await prismadb.user.findUnique({
+    //       where: {
+    //         email: credentials.email,
+    //       },
+    //     });
 
-        if (!user || !user?.hashedPassword) {
-          throw new Error("Invalid credentials");
-        }
+    //     if (!user || !user?.hashedPassword) {
+    //       throw new Error("Invalid credentials");
+    //     }
 
-        const isCorrectPassword = await bcrypt.compare(
-          credentials.password,
-          user.hashedPassword,
-        );
+    //     const isCorrectPassword = await bcrypt.compare(
+    //       credentials.password,
+    //       user.hashedPassword,
+    //     );
 
-        if (!isCorrectPassword) {
-          throw new Error("Invalid credentials");
-        }
+    //     if (!isCorrectPassword) {
+    //       throw new Error("Invalid credentials");
+    //     }
 
-        // if (!user?.emailVerified) {
-        //   throw new Error('User not verified');
-        // }
+    //     // if (!user?.emailVerified) {
+    //     //   throw new Error('User not verified');
+    //     // }
 
-        return user;
-      },
-    }),
+    //     return user;
+    //   },
+    // }),
     // EmailProvider({
     //   from: env.SMTP_FROM,
     //   sendVerificationRequest: async ({ identifier, url, provider }) => {

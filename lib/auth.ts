@@ -11,7 +11,7 @@ import { siteConfig } from "@/config/site";
 import { Resend } from "resend";
 import { VerificationTemplate } from "@/emails/verification";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(process.env.RESEND_API_KEY || "");
 
 
 export const authOptions: NextAuthOptions = {
@@ -66,7 +66,7 @@ export const authOptions: NextAuthOptions = {
           from: provider.from as string,
           subject: "Saas Therapy Magic Link",
           react: VerificationTemplate({ actionUrl: url, site: siteConfig.name }),
-          text: "Welcome to Saas Therapy"
+          text: "Welcome to Saas Therapy!"
         })
 
         console.log(result);

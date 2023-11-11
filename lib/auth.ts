@@ -4,9 +4,7 @@ import EmailProvider from "next-auth/providers/email";
 import GitHubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
 import DiscordProvider from "next-auth/providers/discord";
-import FacebookProvider from "next-auth/providers/facebook";
 import { prismadb } from "@/lib/prismadb";
-import { sendVerificationRequest} from '@/lib/send-verification-request'
 import { siteConfig } from "@/config/site";
 import { Resend } from "resend";
 import { MagicLinkTemplate } from "@/emails/verification";
@@ -33,10 +31,6 @@ export const authOptions: NextAuthOptions = {
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID as string,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
-    }),
-    FacebookProvider({
-      clientId: process.env.FACEBOOK_CLIENT_ID as string,
-      clientSecret: process.env.FACEBOOK_CLIENT_SECRET as string
     }),
     DiscordProvider({
       clientId: process.env.DISCORD_CLIENT_ID as string,

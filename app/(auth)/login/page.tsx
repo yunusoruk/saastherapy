@@ -37,18 +37,24 @@ export default function LoginPage() {
                     <h1 className="text-2xl font-semibold tracking-tight">
                         Welcome back
                     </h1>
-                    {/* <p className="text-sm text-muted-foreground">
-                        Continue with your account
-                    </p> */}
                 </div>
                 <UserAuthForm />
                 <p className="px-8 text-center text-sm text-muted-foreground">
+                    By clicking continue, you agree to our{" "}
                     <Link
-                        href="/register"
+                        href="/terms"
                         className="hover:text-brand underline underline-offset-4"
                     >
-                        Don&apos;t have an account? Sign Up
+                        Terms of Service
+                    </Link>{" "}
+                    and{" "}
+                    <Link
+                        href="/privacy"
+                        className="hover:text-brand underline underline-offset-4"
+                    >
+                        Privacy Policy
                     </Link>
+                    .
                 </p>
             </div>
         </div>

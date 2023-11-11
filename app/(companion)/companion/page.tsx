@@ -1,4 +1,5 @@
 import CompanionList from '@/components/companion/companion-list';
+import { PageHeader, PageHeaderDescription, PageHeaderHeading } from '@/components/page-header';
 import { Metadata } from 'next';
 import type { FC } from 'react';
 
@@ -17,6 +18,7 @@ const CompanionPage: FC<CompanionPageProps> = async ({ searchParams }) => {
 
     return (
         <div className="container">
+
             <CompanionList />
         </div>
     );

@@ -68,7 +68,7 @@ const CompanionCard: FC<CompanionCardProps> = ({
                 <div className="flex items-center justify-between space-x-2">
                     <Label className='flex flex-col space-y-1'>
                         <span className="font-normal leading-snug text-muted-foreground line-clamp-4">
-                            {companion.description}
+                            {companion.name}{" "}is{" "}{companion.description}
                         </span>
                     </Label>
                 </div>

@@ -3,9 +3,12 @@ import type { FC } from 'react';
 import CompanionCard from './companion-card';
 import Image from 'next/image';
 
-interface CompanionListProps { }
+interface CompanionListProps {
 
-const CompanionList: FC<CompanionListProps> = async ({ }) => {
+}
+
+const CompanionList: FC<CompanionListProps> = async ({
+}) => {
 
     const companions = await prismadb.companion.findMany({
         orderBy: {

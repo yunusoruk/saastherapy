@@ -9,7 +9,7 @@ import { prismadb } from "@/lib/prismadb";
 import { sendVerificationRequest} from '@/lib/send-verification-request'
 import { siteConfig } from "@/config/site";
 import { Resend } from "resend";
-import { VerificationTemplate } from "@/emails/verification";
+import { MagicLinkTemplate } from "@/emails/verification";
 
 const resend = new Resend(process.env.RESEND_API_KEY || "");
 
@@ -54,24 +54,17 @@ export const authOptions: NextAuthOptions = {
           },
         })
 
-        // const templateId = user?.emailVerified
-        //   ? process.env.POSTMARK_SIGN_IN_TEMPLATE
-        //   : process.env.POSTMARK_ACTIVATION_TEMPLATE
-        // if (!templateId) {
-        //   throw new Error("Missing template id")
-        // }
-
         const result = await resend.emails.send({
           to: identifier,
           from: provider.from as string,
           subject: "Saas Therapy Magic Link",
-          react: VerificationTemplate({ actionUrl: url, site: siteConfig.name }),
+          react: MagicLinkTemplate({ actionUrl: url, site: siteConfig.name }),
           text: "Welcome to Saas Therapy!"
-        })
+        })        
 
-        console.log(result);
-        
-
+        if (result.error) {
+          throw new Error(result.error.message)
+        }
         
       },
     }),

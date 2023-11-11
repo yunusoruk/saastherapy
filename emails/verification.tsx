@@ -17,13 +17,13 @@ import {
 
 import * as React from 'react';
 
-interface VerificationTemplateProps {
+interface MagicLinkTemplateProps {
 
     actionUrl: string
     site: string
 }
 
-export const VerificationTemplate: React.FC<Readonly<VerificationTemplateProps>> = ({
+export const MagicLinkTemplate: React.FC<Readonly<MagicLinkTemplateProps>> = ({
     actionUrl,
     site
 }) => (
@@ -34,8 +34,8 @@ export const VerificationTemplate: React.FC<Readonly<VerificationTemplateProps>>
             <Container style={container}>
                 <Img
                     src={`https://www.saastherapy.com/images/logo/logo.png`}
-                    width={48}
-                    height={48}
+                    width={96}
+                    height={96}
                     alt="saastherapy"
                 />
                 <Heading style={heading}>Welcome to Saas Therapy 👋</Heading>
@@ -78,7 +78,7 @@ const container = {
 const heading = {
     fontSize: '28px',
     fontWeight: 'bold',
-    marginTop: '48px',
+    marginTop: '24px',
 };
 
 const body = {

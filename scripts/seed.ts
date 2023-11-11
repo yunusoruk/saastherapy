@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const { PrismaClient } = require("@prisma/client");
 
 const db = new PrismaClient();
@@ -55,4 +57,8 @@ async function companionUpdate() {
   }
 }
 
-companion();
+async function main() {
+  console.log('here');
+  
+}
+

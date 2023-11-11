@@ -1,4 +1,3 @@
-import bcrypt from "bcrypt";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { NextAuthOptions } from "next-auth";
 import EmailProvider from "next-auth/providers/email";
@@ -6,11 +5,14 @@ import GitHubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
 import DiscordProvider from "next-auth/providers/discord";
 import FacebookProvider from "next-auth/providers/facebook";
-import CredentialsProvider from "next-auth/providers/credentials";
-import { siteConfig } from "@/config/site";
 import { prismadb } from "@/lib/prismadb";
+import { sendVerificationRequest} from '@/lib/send-verification-request'
+import { siteConfig } from "@/config/site";
+import { Resend } from "resend";
+import { VerificationTemplate } from "@/emails/verification";
 
-// const postmarkClient = new Client(process.env.POSTMARK_API_TOKEN as string)
+const resend = new Resend(process.env.RESEND_API_KEY);
+
 
 export const authOptions: NextAuthOptions = {
   // huh any! I know.
@@ -39,86 +41,40 @@ export const authOptions: NextAuthOptions = {
     DiscordProvider({
       clientId: process.env.DISCORD_CLIENT_ID as string,
       clientSecret: process.env.DISCORD_CLIENT_SECRET as string
-    })
-    // CredentialsProvider({
-    //   name: "credentials",
-    //   credentials: {
-    //     email: { label: "email", type: "text" },
-    //     password: { label: "password", type: "password" },
-    //   },
-    //   async authorize(credentials) {
-    //     if (!credentials?.email || !credentials?.password) {
-    //       return null;
-    //     }
+    }),
+    EmailProvider({
+      from: process.env.SMTP_FROM,
+      sendVerificationRequest: async ({ identifier, url, provider }) => {
+        const user = await prismadb.user.findUnique({
+          where: {
+            email: identifier,
+          },
+          select: {
+            emailVerified: true,
+          },
+        })
 
-    //     const user = await prismadb.user.findUnique({
-    //       where: {
-    //         email: credentials.email,
-    //       },
-    //     });
+        // const templateId = user?.emailVerified
+        //   ? process.env.POSTMARK_SIGN_IN_TEMPLATE
+        //   : process.env.POSTMARK_ACTIVATION_TEMPLATE
+        // if (!templateId) {
+        //   throw new Error("Missing template id")
+        // }
 
-    //     if (!user || !user?.hashedPassword) {
-    //       throw new Error("Invalid credentials");
-    //     }
+        const result = await resend.emails.send({
+          to: identifier,
+          from: provider.from as string,
+          subject: "Saas Therapy Magic Link",
+          react: VerificationTemplate({ actionUrl: url, site: siteConfig.name }),
+          text: "Welcome to Saas Therapy"
+        })
 
-    //     const isCorrectPassword = await bcrypt.compare(
-    //       credentials.password,
-    //       user.hashedPassword,
-    //     );
+        console.log(result);
+        
 
-    //     if (!isCorrectPassword) {
-    //       throw new Error("Invalid credentials");
-    //     }
-
-    //     // if (!user?.emailVerified) {
-    //     //   throw new Error('User not verified');
-    //     // }
-
-    //     return user;
-    //   },
-    // }),
-    // EmailProvider({
-    //   from: env.SMTP_FROM,
-    //   sendVerificationRequest: async ({ identifier, url, provider }) => {
-    //     const user = await prismadb.user.findUnique({
-    //       where: {
-    //         email: identifier,
-    //       },
-    //       select: {
-    //         emailVerified: true,
-    //       },
-    //     })
-
-    //     const templateId = user?.emailVerified
-    //       ? env.POSTMARK_SIGN_IN_TEMPLATE
-    //       : env.POSTMARK_ACTIVATION_TEMPLATE
-    //     if (!templateId) {
-    //       throw new Error("Missing template id")
-    //     }
-
-    //     const result = await postmarkClient.sendEmailWithTemplate({
-    //       TemplateId: parseInt(templateId),
-    //       To: identifier,
-    //       From: provider.from as string,
-    //       TemplateModel: {
-    //         action_url: url,
-    //         product_name: siteConfig.name,
-    //       },
-    //       Headers: [
-    //         {
-    //           // Set this to prevent Gmail from threading emails.
-    //           // See https://stackoverflow.com/questions/23434110/force-emails-not-to-be-grouped-into-conversations/25435722.
-    //           Name: "X-Entity-Ref-ID",
-    //           Value: new Date().getTime() + "",
-    //         },
-    //       ],
-    //     })
-
-    //     if (result.ErrorCode) {
-    //       throw new Error(result.Message)
-    //     }
-    //   },
-    // }),
+        
+      },
+    }),
   ],
   callbacks: {
     async session({ token, session }) {

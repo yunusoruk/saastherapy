@@ -47,7 +47,7 @@ export const SubscriptionTemplate = ({ date }: SubscriptionTemplateProps) => (
                     <Text style={global.text}>
                         You order's is on its way. Use the link above to track its progress.
                     </Text>
-                    <Heading style={global.heading}>Your subscription details</Heading>
+                    <Heading style={global.heading}>Your subscription details.</Heading>
                     <Text style={{ ...global.text, marginTop: 24 }}>
                         Start date: {formatDate(date)}
                     </Text>

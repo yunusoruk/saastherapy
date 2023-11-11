@@ -78,7 +78,7 @@ const container = {
 const heading = {
     fontSize: '28px',
     fontWeight: 'bold',
-    marginTop: '24px',
+    marginTop: '12px',
 };
 
 const body = {

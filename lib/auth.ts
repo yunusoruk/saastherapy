@@ -59,7 +59,10 @@ export const authOptions: NextAuthOptions = {
           from: provider.from as string,
           subject: "Saas Therapy Magic Link",
           react: MagicLinkTemplate({ actionUrl: url, site: siteConfig.name }),
-          text: "Welcome to Saas Therapy!"
+          text: "Welcome to Saas Therapy!",
+          headers: {
+            'X-Entity-Ref-ID': new Date().getTime() + "",
+          }
         })        
 
         if (result.error) {

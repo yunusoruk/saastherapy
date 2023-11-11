@@ -23,10 +23,6 @@ interface VerificationTemplateProps {
     site: string
 }
 
-const baseUrl = process.env.NEXT_PUBLIC_APP_URL
-    ? `${process.env.NEXT_PUBLIC_APP_URL}`
-    : '';
-
 export const VerificationTemplate: React.FC<Readonly<VerificationTemplateProps>> = ({
     actionUrl,
     site
@@ -37,7 +33,7 @@ export const VerificationTemplate: React.FC<Readonly<VerificationTemplateProps>>
         <Body style={main}>
             <Container style={container}>
                 <Img
-                    src={`${baseUrl}/images/logo/logo.png`}
+                    src={`https://www.saastherapy.com/images/logo/logo.png`}
                     width={48}
                     height={48}
                     alt="saastherapy"

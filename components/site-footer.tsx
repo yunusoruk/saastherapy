@@ -11,7 +11,7 @@ const navigation = {
         { name: "Chat", href: "/chat", status: true },
         { name: "Contact", href: "/contact", status: true },
         { name: "Terms", href: "/terms", status: true },
-        { name: "Privacy", href: "/Privacy", status: true },
+        { name: "Privacy", href: "/privacy", status: true },
     ],
     social: [
         {

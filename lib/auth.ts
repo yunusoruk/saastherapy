@@ -11,7 +11,6 @@ import { MagicLinkTemplate } from "@/emails/verification";
 
 const resend = new Resend(process.env.RESEND_API_KEY || "");
 
-
 export const authOptions: NextAuthOptions = {
   // huh any! I know.
   // This is a temporary fix for prisma client.
@@ -34,7 +33,7 @@ export const authOptions: NextAuthOptions = {
     }),
     DiscordProvider({
       clientId: process.env.DISCORD_CLIENT_ID as string,
-      clientSecret: process.env.DISCORD_CLIENT_SECRET as string
+      clientSecret: process.env.DISCORD_CLIENT_SECRET as string,
     }),
     EmailProvider({
       from: process.env.SMTP_FROM,
@@ -46,7 +45,7 @@ export const authOptions: NextAuthOptions = {
           select: {
             emailVerified: true,
           },
-        })
+        });
 
         const result = await resend.emails.send({
           to: identifier,
@@ -55,14 +54,13 @@ export const authOptions: NextAuthOptions = {
           react: MagicLinkTemplate({ actionUrl: url, site: siteConfig.name }),
           text: "Welcome to Saas Therapy!",
           headers: {
-            'X-Entity-Ref-ID': new Date().getTime() + "",
-          }
-        })        
+            "X-Entity-Ref-ID": new Date().getTime() + "",
+          },
+        });
 
         if (result.error) {
-          throw new Error(result.error.message)
+          throw new Error(result.error.message);
         }
-        
       },
     }),
   ],

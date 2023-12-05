@@ -29,6 +29,7 @@ const ChatIdPage: FC<ChatIdPageProps> = async ({ params }) => {
         redirect(`/chat`)
     }
 
+
     const { isPro } = await getUserSubscriptionPlan(currentUser.id)
 
     const companion = await prismadb.companion.findUnique({

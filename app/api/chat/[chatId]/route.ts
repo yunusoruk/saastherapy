@@ -19,7 +19,9 @@ export async function POST(
     const { prompt } = await request.json();
     const user = await getCurrentUser();
 
-    if (!user || !user.name || !user.id) {
+
+
+    if (!user  || !user.id) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
 
@@ -49,6 +51,7 @@ export async function POST(
       return new NextResponse("Companion not found", { status: 404 });
     }
 
+
     const name = companion.id;
     const companion_file_name = name + ".txt";
 
@@ -64,6 +67,7 @@ export async function POST(
       await memoryManager.seedChatHistory(companion.seed, "\n\n", companionKey);
     }
     await memoryManager.writeToHistory("User: " + prompt + "\n", companionKey);
+
 
     // Query Pinecone
 
@@ -93,7 +97,6 @@ export async function POST(
       callbackManager: CallbackManager.fromHandlers(handlers),
     });
 
-    console.log('model next');
 
     // Turn verbose on for debugging
     model.verbose = true;
@@ -115,7 +118,6 @@ export async function POST(
         .catch(console.error)
     );
 
-    console.log('model past');
 
 
     const cleaned = resp.replaceAll(",", "");

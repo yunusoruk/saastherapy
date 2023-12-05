@@ -23,6 +23,7 @@ export default async function MarketingLayout({
 
     const user = await getCurrentUser()
 
+
     return (
         <div className="h-full flex flex-col">
             <header className="border-b z-40 bg-background">

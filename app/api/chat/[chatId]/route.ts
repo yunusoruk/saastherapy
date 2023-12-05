@@ -93,6 +93,8 @@ export async function POST(
       callbackManager: CallbackManager.fromHandlers(handlers),
     });
 
+    console.log('model next');
+
     // Turn verbose on for debugging
     model.verbose = true;
 
@@ -112,6 +114,9 @@ export async function POST(
         )
         .catch(console.error)
     );
+
+    console.log('model past');
+
 
     const cleaned = resp.replaceAll(",", "");
     const chunks = cleaned.split("\n");

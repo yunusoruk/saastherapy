@@ -8,6 +8,7 @@ import { ThemeProvider } from '@/components/theme-provider'
 import { Analytics } from '@/components/analytics'
 import { Toaster } from '@/components/ui/toaster'
 import { TailwindIndicator } from '@/components/tailwind-indicator'
+import { GoogleAnalytics } from "nextjs-google-analytics";
 
 const fontSans = FontSans({ subsets: ['latin'], variable: "--font-sans" })
 
@@ -87,7 +88,7 @@ export default function RootLayout({
         <ThemeProvider attribute='class' defaultTheme='system' enableSystem >
           {children}
           <TailwindIndicator />
-          <Analytics />
+          <GoogleAnalytics strategy="lazyOnload" />
           <Toaster />
         </ThemeProvider>
       </body>

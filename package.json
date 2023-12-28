@@ -52,6 +52,7 @@
     "next-auth": "^4.22.4",
     "next-contentlayer": "^0.3.1",
     "next-themes": "^0.2.1",
+    "nextjs-google-analytics": "^2.3.3",
     "nodemailer": "^6.9.7",
     "openai": "^4.17.4",
     "openai-edge": "^1.2.2",
